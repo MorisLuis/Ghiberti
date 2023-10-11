@@ -14,6 +14,7 @@ const useIsMobile = (): boolean => {
     return (): void => window.removeEventListener('resize', updateSize);
   }, []); */
 
+  //comment delete
   return isMobile;
 };
 
