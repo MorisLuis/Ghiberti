@@ -1,29 +1,27 @@
 /*eslint complexity: ["error", 20]*/
 // Imports
-import { useContext, useEffect } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+/* import { useMutation, useQuery } from '@apollo/client';
+ */
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { v4 as uuidv4 } from 'uuid';
 
 // State
-import { CartContext } from '@/stores/CartProvider';
 
 // Components
 import Button from '@/components/UI/Button.component';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.component';
-
+/* import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.component';
+ */
 // Utils
-import {
+/* import {
   getFormattedCart,
   getUpdatedItems,
   handleQuantityChange,
   IProductRootObject,
-} from '@/utils/functions/functions';
+} from '@/utils/functions/functions'; */
 
 // GraphQL
-import { GET_CART } from '@/utils/gql/GQL_QUERIES';
-import { UPDATE_CART } from '@/utils/gql/GQL_MUTATIONS';
+/* import { GET_CART } from '@/utils/gql/GQL_QUERIES';
+import { UPDATE_CART } from '@/utils/gql/GQL_MUTATIONS'; */
 
 /**
  * Renders cart contents.
@@ -33,12 +31,20 @@ import { UPDATE_CART } from '@/utils/gql/GQL_MUTATIONS';
 const CartContents = () => {
   const router = useRouter();
 
-  const { setCart } = useContext(CartContext);
+  //const { setCart } = useContext(CartContext);
 
   const isCheckoutPage = router.pathname === '/kasse';
 
+  const data : any = [
+    {
+      name: 'producto 1',
+      quantity: 3,
+      key : 1
+    }
+  ]
+
   // Get cart data query
-  const { data, refetch } = useQuery(GET_CART, {
+  /* const { data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
@@ -57,10 +63,10 @@ const CartContents = () => {
       // Update cart data in React Context.
       setCart(updatedCart);
     },
-  });
+  }); */
 
   // Update Cart Mutation.
-  const [updateCart, { loading: updateCartProcessing }] = useMutation(
+  /* const [updateCart, { loading: updateCartProcessing }] = useMutation(
     UPDATE_CART,
     {
       onCompleted: () => {
@@ -70,9 +76,9 @@ const CartContents = () => {
         }, 3000);
       },
     },
-  );
+  ); */
 
-  const handleRemoveProductClick = (
+ /*  const handleRemoveProductClick = (
     cartKey: string,
     products: IProductRootObject[],
   ) => {
@@ -96,20 +102,19 @@ const CartContents = () => {
     setTimeout(() => {
       refetch();
     }, 3000);
-  };
+  }; */
 
-  useEffect(() => {
+  /* useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, [refetch]); */
 
   return (
     <section className="py-8  mt-10">
       <div className="container flex flex-wrap items-center mx-auto">
         {data?.cart?.contents?.nodes.length ? (
-          data.cart.contents.nodes.map((item: IProductRootObject) => (
+          data.cart.contents.nodes.map((item: any) => (
             <div
-              className="container mx-auto mt-4 flex flex-wrap flex-row justify-around items-center content-center m-w-[1380px] border border-gray-300 rounded-lg shadow
-               "
+              className="container mx-auto mt-4 flex flex-wrap flex-row justify-around items-center content-center m-w-[1380px] border border-gray-300 rounded-lg shadow"
               key={item.key}
             >
               <div className="lg:m-2 xl:m-4 xl:w-1/6 lg:w-1/6 sm:m-2 w-auto">
@@ -119,13 +124,13 @@ const CartContents = () => {
                 <span className="inline-block mt-4 w-20 h-12 md:w-full lg:w-full xl:w-full">
                   <Button
                     color="red"
-                    buttonDisabled={updateCartProcessing}
-                    handleButtonClick={() =>
+                    //buttonDisabled={updateCartProcessing}
+                   /*  handleButtonClick={() =>
                       handleRemoveProductClick(
                         item.key,
                         data.cart.contents.nodes,
                       )
-                    }
+                    } */
                   >
                     Slett
                   </Button>
@@ -136,7 +141,7 @@ const CartContents = () => {
                   Navn: <br />
                 </span>
                 <span className="inline-block mt-4 w-20 h-12 md:w-full lg:w-full xl:w-full">
-                  {item.product.node.name}
+                  {item.name}
                 </span>
               </div>
               <div className="lg:m-2 xl:m-4 xl:w-1/6 lg:w-1/6 sm:m-2 w-auto">
@@ -149,7 +154,7 @@ const CartContents = () => {
                     type="number"
                     min="1"
                     value={item.quantity}
-                    onChange={(event) => {
+                    /* onChange={(event) => {
                       handleQuantityChange(
                         event,
                         item.key,
@@ -157,7 +162,7 @@ const CartContents = () => {
                         updateCart,
                         updateCartProcessing,
                       );
-                    }}
+                    }} */
                   />
                 </span>
               </div>
@@ -176,14 +181,14 @@ const CartContents = () => {
             Ingen produkter i handlekurven
           </h1>
         )}
-        {updateCartProcessing && (
+        {/* {updateCartProcessing && (
           <div className="mt-4 w-full">
             <div className="text-xl mx-auto text-center">
               Oppdaterer antall, vennligst vent ...
               <LoadingSpinner />
             </div>
           </div>
-        )}
+        )} */}
         {!isCheckoutPage && data?.cart?.contents?.nodes.length ? (
           <div className="mt-4 mx-auto">
             <Link href="/kasse" passHref>

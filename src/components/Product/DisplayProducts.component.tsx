@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 
 import { filteredVariantPrice, paddedPrice } from '@/utils/functions/functions';
-
+import ImageComponent from '../../components/Image/image';
+import Image from 'next/image';
 interface Image {
   __typename: string;
   sourceUrl?: string;
@@ -46,32 +47,17 @@ interface IDisplayProductsProps {
  * @returns {JSX.Element} - Rendered component
  */
 
-const DisplayProducts = ({ products }: IDisplayProductsProps) => (
-  <section className="container mx-auto bg-white">
-    <div id="product-container" className="flex flex-wrap items-center">
-      {products ? (
-        products.map(
-          ({
-            databaseId,
-            name,
-            price,
-            regularPrice,
-            salePrice,
-            onSale,
-            slug,
-            image,
-            variations,
-          }) => {
-            // Add padding/empty character after currency symbol here
-            if (price) {
-              price = paddedPrice(price, 'kr');
-            }
-            if (regularPrice) {
-              regularPrice = paddedPrice(regularPrice, 'kr');
-            }
-            if (salePrice) {
-              salePrice = paddedPrice(salePrice, 'kr');
-            }
+const DisplayProducts = ({ products }: IDisplayProductsProps) => {
+
+
+  return (
+    <section className="container mx-auto bg-white">
+      <div id="product-container" className="flex flex-wrap items-center">
+        {
+          products ? (products.map((item: any) => {
+
+            const image = item.images?.[0]?.src ?? {};
+            //console.log({image})
 
             return (
               <div
@@ -79,72 +65,64 @@ const DisplayProducts = ({ products }: IDisplayProductsProps) => (
                 className="flex flex-col p-6 md:w-1/2 xl:w-1/4"
               >
                 <Link
-                  href={`/produkt/${encodeURIComponent(
-                    slug,
-                  )}?id=${encodeURIComponent(databaseId)}`}
+                  href={`/produkt/${encodeURIComponent(item.slug,)}?id=${encodeURIComponent(item.databaseId)}`}
                 >
                   <span>
-                    {image ? (
-                      <img
-                        id="product-image"
-                        className="transition duration-500 ease-in-out transform cursor-pointer hover:grow hover:shadow-lg hover:scale-105"
-                        alt={name}
-                        src={image.sourceUrl}
-                      />
-                    ) : (
-                      <img
-                        id="product-image"
-                        className="transition duration-500 ease-in-out transform cursor-pointer hover:grow hover:shadow-lg hover:scale-105"
-                        alt={name}
-                        src={
-                          process.env.NEXT_PUBLIC_PLACEHOLDER_SMALL_IMAGE_URL
-                        }
-                      />
-                    )}
+                    {
+                      item.images &&
+
+                      <Image
+                            src={image || ""}
+                            alt="photo"
+                            width={200}
+                            height={200}
+                        />
+                    }
                   </span>
                 </Link>
 
                 <Link
                   href={`/produkt/${encodeURIComponent(
-                    slug,
-                  )}?id=${encodeURIComponent(databaseId)}`}
+                    item.slug,
+                  )}?id=${encodeURIComponent(item.databaseId)}`}
                 >
                   <span>
                     <div className="flex justify-center pt-3">
                       <p className="font-bold text-center cursor-pointer">
-                        {name}
+                        {item.name}
                       </p>
                     </div>
                   </span>
                 </Link>
                 {/* Display sale price when on sale */}
-                {onSale && (
+                {item.onSale && (
                   <div className="flex justify-center">
                     <div className="pt-1 text-gray-900">
-                      {variations && filteredVariantPrice(price, '')}
-                      {!variations && salePrice}
+                      {item.variations && filteredVariantPrice(item.price, '')}
+                      {!item.variations && item.salePrice}
                     </div>
                     <div className="pt-1 ml-2 text-gray-900 line-through">
-                      {variations && filteredVariantPrice(price, 'right')}
-                      {!variations && regularPrice}
+                      {item.variations && filteredVariantPrice(item.price, 'right')}
+                      {!item.variations && item.regularPrice}
                     </div>
                   </div>
                 )}
                 {/* Display regular price when not on sale */}
-                {!onSale && (
-                  <p className="pt-1 text-center text-gray-900">{price}</p>
+                {!item.onSale && (
+                  <p className="pt-1 text-center text-gray-900">{item.price}</p>
                 )}
               </div>
             );
           },
-        )
-      ) : (
-        <div className="mx-auto text-xl font-bold text-center text-gray-800 no-underline uppercase">
-          Ingen produkter funnet
-        </div>
-      )}
-    </div>
-  </section>
-);
+          )
+          ) : (
+            <div className="mx-auto text-xl font-bold text-center text-gray-800 no-underline uppercase">
+              Ingen produkter funnet
+            </div>
+          )}
+      </div>
+    </section>
+  )
+};
 
 export default DisplayProducts;

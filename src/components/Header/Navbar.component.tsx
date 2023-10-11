@@ -13,8 +13,12 @@ import useIsMobile from '@/utils/hooks/useIsMobile';
  * Navigation for the application.
  * Includes mobile menu.
  */
-const Navbar = () => {
+const Navbar = ({
+  header
+}: any) => {
   const isMobile = useIsMobile();
+  const { headerMenuItems } = header
+
   return (
     <header>
       <nav id="header" className="top-0 z-50 w-full py-1 bg-white ">
@@ -24,7 +28,19 @@ const Navbar = () => {
             id="menu"
           >
             <ul className="items-center justify-between pt-4 text-base text-gray-700 md:flex md:pt-0">
-              <li>
+              {
+                headerMenuItems.map((item: any) =>
+                  <li key={item.ID}>
+                    <Link href={`/${item.pageSlug}`} >
+                      <span className="inline-block py-2 pr-4 text-xl font-bold no-underline hover:underline">
+                        {item.title}
+                      </span>
+                    </Link>
+                  </li>
+
+                )
+              }
+              {/* <li>
                 <Link href="/produkter">
                   <span className="inline-block py-2 pr-4 text-xl font-bold no-underline hover:underline">
                     Produkter
@@ -37,7 +53,7 @@ const Navbar = () => {
                     Kategorier
                   </span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="order-1 md:order-2">

@@ -1,7 +1,7 @@
 /*eslint complexity: ["error", 20]*/
 // Imports
 import { useState, useContext, useEffect } from 'react';
-import { useQuery, useMutation, ApolloError } from '@apollo/client';
+//import { useQuery, useMutation, ApolloError } from '@apollo/client';
 
 // Components
 import Billing from './Billing.component';
@@ -9,8 +9,7 @@ import CartContents from '../Cart/CartContents.component';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner.component';
 
 // GraphQL
-import { GET_CART } from '@/utils/gql/GQL_QUERIES';
-import { CHECKOUT_MUTATION } from '@/utils/gql/GQL_MUTATIONS';
+
 import { CartContext } from '@/stores/CartProvider';
 
 // Utils
@@ -53,11 +52,11 @@ export interface ICheckoutData {
 const CheckoutForm = () => {
   const { cart, setCart } = useContext(CartContext);
   const [orderData, setOrderData] = useState<ICheckoutData | null>(null);
-  const [requestError, setRequestError] = useState<ApolloError | null>(null);
+  const [requestError, setRequestError] = useState<any | null>(null);
   const [orderCompleted, setorderCompleted] = useState<boolean>(false);
 
   // Get cart data query
-  const { data, refetch } = useQuery(GET_CART, {
+  /* const { data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
@@ -117,7 +116,7 @@ const CheckoutForm = () => {
 
     setOrderData(checkOutData);
     setRequestError(null);
-  };
+  }; */
 
   return (
     <>
@@ -126,7 +125,7 @@ const CheckoutForm = () => {
           {/*	Order*/}
           <CartContents />
           {/*Payment Details*/}
-          <Billing handleFormSubmit={handleFormSubmit} />
+          <Billing /* handleFormSubmit={handleFormSubmit} */ handleFormSubmit={() => console.log("ola")}/>
           {/*Error display*/}
           {requestError && (
             <div className="h-32 text-xl text-center text-red-600">
@@ -134,12 +133,12 @@ const CheckoutForm = () => {
             </div>
           )}
           {/* Checkout Loading*/}
-          {checkoutLoading && (
+          {/* {checkoutLoading && (
             <div className="text-xl text-center">
               Behandler ordre, vennligst vent ...
               <LoadingSpinner />
             </div>
-          )}
+          )} */}
         </div>
       ) : (
         <>

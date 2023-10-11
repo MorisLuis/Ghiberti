@@ -6,7 +6,6 @@ import SingleProduct from '@/components/Product/SingleProduct.component';
 import Layout from '@/components/Layout/Layout.component';
 
 // Utilities
-import client from '@/utils/apollo/ApolloClient';
 
 // Types
 import type {
@@ -15,8 +14,6 @@ import type {
   InferGetServerSidePropsType,
 } from 'next';
 
-// GraphQL
-import { GET_SINGLE_PRODUCT } from '@/utils/gql/GQL_QUERIES';
 
 /**
  * Display a single product with dynamic pretty urls
@@ -50,12 +47,14 @@ export default withRouter(Produkt);
 export const getServerSideProps: GetServerSideProps = async ({
   query: { id },
 }) => {
-  const { data, loading, networkStatus } = await client.query({
+  /* const { data, loading, networkStatus } = await client.query({
     query: GET_SINGLE_PRODUCT,
     variables: { id },
-  });
+  }); */
 
   return {
-    props: { product: data.product, loading, networkStatus },
+    //props: { product: data.product, loading, networkStatus },
+    props: { product:[], loading: false, networkStatus: false },
+
   };
 };

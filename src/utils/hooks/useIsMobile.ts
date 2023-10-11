@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 const useIsMobile = (): boolean => {
   const [isMobile, setIsMobile] = useState(false);
 
-  useLayoutEffect(() => {
+  /* useLayoutEffect(() => {
     const updateSize = (): void => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -12,7 +12,7 @@ const useIsMobile = (): boolean => {
     updateSize();
 
     return (): void => window.removeEventListener('resize', updateSize);
-  }, []);
+  }, []); */
 
   return isMobile;
 };

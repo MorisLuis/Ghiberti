@@ -6,9 +6,8 @@ import CheckoutForm from '@/components/Checkout/CheckoutForm.component';
 import type { NextPage } from 'next';
 
 const Kasse: NextPage = () => (
-  <Layout title="Kasse">
-    <CheckoutForm />
-  </Layout>
+  <p>Kasse</p>
+
 );
 
 export default Kasse;

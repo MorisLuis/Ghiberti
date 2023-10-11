@@ -2,45 +2,43 @@
 import Hero from '@/components/Index/Hero.component';
 import DisplayProducts from '@/components/Product/DisplayProducts.component';
 import Layout from '@/components/Layout/Layout.component';
+import { GetStaticProps } from 'next';
+import axios from 'axios';
+import { HEADER_FOOTER_ENDPOINT } from '@/utils/constants/endpoints';
+import { getProductsData } from '@/utils/products';
 
-// Utilities
-import client from '@/utils/apollo/ApolloClient';
+const Index = ({
+  headerFooter,
+  products
+}: any) => {
 
-// Types
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+  return (
+    <Layout title="Hjem" headerFooter={headerFooter}>
+      <Hero />
+      {products && <DisplayProducts products={products} />}
+    </Layout>
+  )
 
-// GraphQL
-import { FETCH_ALL_PRODUCTS_QUERY } from '@/utils/gql/GQL_QUERIES';
-
-/**
- * Main index page
- * @function Index
- * @param {InferGetStaticPropsType<typeof getStaticProps>} products
- * @returns {JSX.Element} - Rendered component
- */
-
-const Index: NextPage = ({
-  products,
-}: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <Layout title="Hjem">
-    <Hero />
-    {products && <DisplayProducts products={products} />}
-  </Layout>
-);
+};
 
 export default Index;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data, loading, networkStatus } = await client.query({
-    query: FETCH_ALL_PRODUCTS_QUERY,
-  });
+
+  const menu  = await axios.get(HEADER_FOOTER_ENDPOINT)
+  const headerFooterData = menu.data.data
+
+  //const {data: products}  = await axios.get('http://localhost:3000/api/get-products')
+	const { data: products } = await getProductsData();
+
 
   return {
     props: {
-      products: data.products.nodes,
-      loading,
-      networkStatus,
+      headerFooter: headerFooterData ?? {},
+      products: products,
+      loading : false,
+      networkStatus : false,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 };

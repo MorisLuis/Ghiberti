@@ -1,6 +1,6 @@
 // Imports
 import { useContext, useState } from 'react';
-import { useQuery, useMutation } from '@apollo/client';
+//import { useQuery, useMutation } from '@apollo/client';
 import { v4 as uuidv4 } from 'uuid';
 
 // Components
@@ -12,9 +12,6 @@ import { CartContext } from '@/stores/CartProvider';
 // Utils
 import { getFormattedCart } from '@/utils/functions/functions';
 
-// GraphQL
-import { GET_CART } from '@/utils/gql/GQL_QUERIES';
-import { ADD_TO_CART } from '@/utils/gql/GQL_MUTATIONS';
 
 interface IImage {
   __typename: string;
@@ -100,7 +97,7 @@ const AddToCart = ({ product, variationId }: IProductRootObject) => {
   };
 
   // Get cart data query
-  const { data, refetch } = useQuery(GET_CART, {
+  /* const { data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
@@ -115,10 +112,10 @@ const AddToCart = ({ product, variationId }: IProductRootObject) => {
       // Update cart data in React Context.
       setCart(updatedCart);
     },
-  });
+  }); */
 
   // Add to cart mutation
-  const [addToCart, { loading: addToCartLoading }] = useMutation(ADD_TO_CART, {
+  /* const [addToCart, { loading: addToCartLoading }] = useMutation(ADD_TO_CART, {
     variables: {
       input: productQueryInput,
     },
@@ -131,21 +128,21 @@ const AddToCart = ({ product, variationId }: IProductRootObject) => {
     onError: () => {
       setRequestError(true);
     },
-  });
+  }); */
 
-  const handleAddToCart = () => {
+  /* const handleAddToCart = () => {
     addToCart();
     // Refetch cart after 2 seconds
     setTimeout(() => {
       refetch();
     }, 2000);
-  };
+  }; */
 
   return (
     <>
       <Button
-        handleButtonClick={() => handleAddToCart()}
-        buttonDisabled={addToCartLoading || requestError}
+        /* handleButtonClick={() => handleAddToCart()}
+        buttonDisabled={addToCartLoading || requestError} */
       >
         KJØP
       </Button>

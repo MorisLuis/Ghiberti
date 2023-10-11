@@ -6,9 +6,7 @@ import CartContents from '@/components/Cart/CartContents.component';
 import type { NextPage } from 'next';
 
 const Handlekurv: NextPage = () => (
-  <Layout title="Handlekurv">
-    <CartContents />
-  </Layout>
+  <p>handle ru</p>
 );
 
 export default Handlekurv;

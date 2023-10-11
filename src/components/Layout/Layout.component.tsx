@@ -1,7 +1,7 @@
 // Imports
-import { ReactNode, useContext, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-
+import { ReactNode } from 'react';
+/* import { useQuery } from '@apollo/client';
+ */
 // Components
 import Header from '@/components/Header/Header.component';
 import PageTitle from './PageTitle.component';
@@ -9,17 +9,19 @@ import Footer from '@/components/Footer/Footer.component';
 import Stickynav from '@/components/Footer/Stickynav.component';
 
 // State
-import { CartContext } from '@/stores/CartProvider';
-
+/* import { CartContext } from '@/stores/CartProvider';
+ */
 // Utils
-import { getFormattedCart } from '@/utils/functions/functions';
-
+/* import { getFormattedCart } from '@/utils/functions/functions';
+ */
 // GraphQL
-import { GET_CART } from '@/utils/gql/GQL_QUERIES';
+/* import { GET_CART } from '@/utils/gql/GQL_QUERIES';
+ */
 
 interface ILayoutProps {
   children?: ReactNode;
   title: string;
+  headerFooter?: any
 }
 
 /**
@@ -30,10 +32,11 @@ interface ILayoutProps {
  * @returns {JSX.Element} - Rendered component
  */
 
-const Layout = ({ children, title }: ILayoutProps) => {
-  const { setCart } = useContext(CartContext);
+const Layout = ({ children, title, headerFooter }: ILayoutProps) => {
+  //const { setCart } = useContext(CartContext);
 
-  const { data, refetch } = useQuery(GET_CART, {
+
+  /* const { data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
@@ -50,18 +53,24 @@ const Layout = ({ children, title }: ILayoutProps) => {
       // Update cart data in React Context.
       setCart(updatedCart);
     },
-  });
+  }); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     refetch();
-  }, [refetch]);
+  }, [refetch]); */
+
+  const { header, footer } = headerFooter || {};
 
   return (
     <>
-      <Header title={title} />
+      <Header title={title} header={header}/>
+
       <PageTitle title={title} />
+
       {children}
-      <Footer />
+
+      <Footer footer={footer}/>
+  
       <Stickynav />
     </>
   );
