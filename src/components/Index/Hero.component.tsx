@@ -11,15 +11,15 @@ const Hero = () => (
     <div className="container mx-auto">
       <div className="flex flex-col items-start justify-center w-full px-6 tracking-wide lg:w-1/2">
         <h1 className="p-4 my-4 text-2xl text-white bg-black rounded-lg">
-          Stripete Zig Zag Pute Sett
+          DISEÑOS ELEGANTES DE CARÁCTER ATEMPORAL
         </h1>
 
-        <a
+        {/*  <a
           className="inline-block px-6 py-3 text-xl leading-relaxed text-white uppercase bg-black rounded-lg hover:underline"
           href="#"
         >
-          se utvalget
-        </a>
+          Continuar
+        </a> */}
       </div>
     </div>
   </section>

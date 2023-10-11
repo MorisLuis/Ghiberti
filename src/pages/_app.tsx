@@ -11,6 +11,7 @@ import type { AppProps } from 'next/app';
 // Styles
 import '@/styles/globals.css';
 import 'nprogress/nprogress.css';
+import { AppProvider } from 'context';
 
 // NProgress
 Router.events.on('routeChangeStart', () => NProgress.start());
@@ -19,9 +20,11 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <AppProvider>
       <CartProvider>
         <Component {...pageProps} />
       </CartProvider>
+    </AppProvider>
   );
 }
 

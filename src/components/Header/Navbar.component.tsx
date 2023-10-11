@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 // Components
 import Cart from './Cart.component';
-import AlgoliaSearchBox from '../AlgoliaSearch/AlgoliaSearchBox.component';
-import MobileSearch from '../AlgoliaSearch/MobileSearch.component';
 
 // Utils
 import useIsMobile from '@/utils/hooks/useIsMobile';
@@ -40,20 +38,6 @@ const Navbar = ({
 
                 )
               }
-              {/* <li>
-                <Link href="/produkter">
-                  <span className="inline-block py-2 pr-4 text-xl font-bold no-underline hover:underline">
-                    Produkter
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/kategorier">
-                  <span className="inline-block py-2 pr-4 text-xl font-bold no-underline hover:underline">
-                    Kategorier
-                  </span>
-                </Link>
-              </li> */}
             </ul>
           </div>
           <div className="order-1 md:order-2">
@@ -72,7 +56,7 @@ const Navbar = ({
                     aria-label="Nettbutikk logo"
                   />
                 </svg>
-                NETTBUTIKK
+                Ghiberti
               </span>
             </Link>
           </div>
@@ -80,8 +64,6 @@ const Navbar = ({
             className="flex items-center order-2 md:order-3"
             id="nav-content"
           >
-            <AlgoliaSearchBox />
-            <MobileSearch />
             {!isMobile && <Cart />}
           </div>
         </div>

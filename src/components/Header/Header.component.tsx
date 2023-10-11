@@ -16,11 +16,10 @@ interface IHeaderProps {
 
 const Header = ({ title, header }: IHeaderProps) => {
 
-const { headerMenuItems } = header
   return (
     <>
       <Head>
-        <title>Next.js webshop with WooCommerce {title}</title>
+        <title>Ghiberti / {title}</title>
         <meta name="description" content="WooCommerce webshop" />
         <meta name="keywords" content="Ecommerce, WooCommerce" />
         <meta

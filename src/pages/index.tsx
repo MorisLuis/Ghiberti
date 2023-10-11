@@ -13,7 +13,7 @@ const Index = ({
 }: any) => {
 
   return (
-    <Layout title="Hjem" headerFooter={headerFooter}>
+    <Layout title="Ghiberti" headerFooter={headerFooter}>
       <Hero />
       {products && <DisplayProducts products={products} />}
     </Layout>

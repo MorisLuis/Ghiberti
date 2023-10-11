@@ -7,6 +7,7 @@ import Header from '@/components/Header/Header.component';
 import PageTitle from './PageTitle.component';
 import Footer from '@/components/Footer/Footer.component';
 import Stickynav from '@/components/Footer/Stickynav.component';
+import { AppProvider } from '../../../context';
 
 // State
 /* import { CartContext } from '@/stores/CartProvider';
@@ -33,45 +34,21 @@ interface ILayoutProps {
  */
 
 const Layout = ({ children, title, headerFooter }: ILayoutProps) => {
-  //const { setCart } = useContext(CartContext);
-
-
-  /* const { data, refetch } = useQuery(GET_CART, {
-    notifyOnNetworkStatusChange: true,
-    onCompleted: () => {
-      // Update cart in the localStorage.
-      const updatedCart = getFormattedCart(data);
-
-      if (!updatedCart && !data?.cart?.contents?.nodes.length) {
-        // Should we clear the localStorage if we have no remote cart?
-
-        return;
-      }
-
-      localStorage.setItem('woocommerce-cart', JSON.stringify(updatedCart));
-
-      // Update cart data in React Context.
-      setCart(updatedCart);
-    },
-  }); */
-
-  /* useEffect(() => {
-    refetch();
-  }, [refetch]); */
 
   const { header, footer } = headerFooter || {};
 
   return (
     <>
-      <Header title={title} header={header}/>
 
-      <PageTitle title={title} />
+        <Header title={title} header={header} />
 
-      {children}
+        <PageTitle title={title} />
 
-      <Footer footer={footer}/>
-  
-      <Stickynav />
+        {children}
+
+        <Footer footer={footer} />
+
+        <Stickynav />
     </>
   );
 };

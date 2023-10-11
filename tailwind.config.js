@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-background': "url('/images/hero.jpg')",
+        'hero-background': "url('/images/Montblanc-web.webp')",
       },
     },
   },

@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { filteredVariantPrice, paddedPrice } from '@/utils/functions/functions';
 import ImageComponent from '../../components/Image/image';
 import Image from 'next/image';
+
+import AddToCart from '../../components/Cart/add-to-cart';
+import { viewCart } from '@/utils/cart';
+
 interface Image {
   __typename: string;
   sourceUrl?: string;
@@ -57,7 +61,6 @@ const DisplayProducts = ({ products }: IDisplayProductsProps) => {
           products ? (products.map((item: any) => {
 
             const image = item.images?.[0]?.src ?? {};
-            //console.log({image})
 
             return (
               <div
@@ -65,26 +68,29 @@ const DisplayProducts = ({ products }: IDisplayProductsProps) => {
                 className="flex flex-col p-6 md:w-1/2 xl:w-1/4"
               >
                 <Link
-                  href={`/produkt/${encodeURIComponent(item.slug,)}?id=${encodeURIComponent(item.databaseId)}`}
+                  //href={`/produkt/${encodeURIComponent(item.slug,)}?id=${encodeURIComponent(item.databaseId)}`}
+                  href={`#`}
+
                 >
                   <span>
                     {
                       item.images &&
 
                       <Image
-                            src={image || ""}
-                            alt="photo"
-                            width={200}
-                            height={200}
-                        />
+                        src={image || ""}
+                        alt="photo"
+                        width={200}
+                        height={200}
+                      />
                     }
                   </span>
                 </Link>
 
                 <Link
-                  href={`/produkt/${encodeURIComponent(
+                  /* href={`/produkt/${encodeURIComponent(
                     item.slug,
-                  )}?id=${encodeURIComponent(item.databaseId)}`}
+                  )}?id=${encodeURIComponent(item.databaseId)}`} */
+                  href={`#`}
                 >
                   <span>
                     <div className="flex justify-center pt-3">
@@ -111,6 +117,9 @@ const DisplayProducts = ({ products }: IDisplayProductsProps) => {
                 {!item.onSale && (
                   <p className="pt-1 text-center text-gray-900">{item.price}</p>
                 )}
+
+                <AddToCart product={item}/>
+                {/* <button onClick={ ( ) => viewCart() }>Ver</button> */}
               </div>
             );
           },

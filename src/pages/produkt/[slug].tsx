@@ -2,7 +2,6 @@
 import { withRouter } from 'next/router';
 
 // Components
-import SingleProduct from '@/components/Product/SingleProduct.component';
 import Layout from '@/components/Layout/Layout.component';
 
 // Utilities
@@ -28,11 +27,11 @@ const Produkt: NextPage = ({
   const hasError = networkStatus === '8';
   return (
     <Layout title={`${product.name ? product.name : ''}`}>
-      {product ? (
+      {/* {product ? (
         <SingleProduct product={product} />
       ) : (
         <div className="mt-8 text-2xl text-center">Laster produkt ...</div>
-      )}
+      )} */}
       {hasError && (
         <div className="mt-8 text-2xl text-center">
           Feil under lasting av produkt ...
