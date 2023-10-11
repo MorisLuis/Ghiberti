@@ -22,13 +22,9 @@
   "author": "w3bdesign",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "@types/react": "^18.2.27",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
-=======
-    "@apollo/client": "^3.8.5",
     "@types/react": "^18.2.28",
->>>>>>> d4a4c0b7bc44141ccbd29edb3742e9c011c9f9dd
     "algoliasearch": "^4.20.0",
     "autoprefixer": "^10.4.16",
     "axios": "^1.5.1",
