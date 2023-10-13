@@ -213,7 +213,7 @@ export const CheckoutForm = ({ countriesData }: any) => {
 
                                 {/* Checkout Loading*/}
                                 {isOrderProcessing && <p>Processing Order...</p>}
-                                {requestError && <p>Error : {requestError} :( Please try again</p>}
+                                {requestError && <p>Error : {requestError} : Please try again</p>}
                             </div>
                         </div>
                     </form>

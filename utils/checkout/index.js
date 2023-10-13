@@ -114,7 +114,7 @@ const getStripeLineItems = (products) => {
 			quantity: product?.Piezas ?? 0,
 			name: product?.name ?? '',
 			images: [product?.images?.[0]?.src ?? '' ?? ''],
-			amount: product.price_html,
+			amount: product.price_html * 100,
 			currency: 'usd',
 		};
 	});
