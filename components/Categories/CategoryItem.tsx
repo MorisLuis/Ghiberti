@@ -16,9 +16,9 @@ export const CategoryItem = (product: any) => {
         <div className={styles.product}>
             <Link href={`/category/${id}`} className={styles.item}>
                 <div className={styles.image}>
-                    <img src={imageSource || ""} 
-                    alt={name}
-                    width={200}
+                    <img src={imageSource || ""}
+                        alt={name}
+                        width={200}
                         height={200}
                     />
                     {/* <Image
