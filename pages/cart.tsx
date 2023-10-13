@@ -2,8 +2,7 @@ import Layout from '@/components/Layout'
 import { ProductCart } from '@/components/Products/ProductCart';
 import { CartContext } from '@/context';
 import { format } from '@/utils/currency';
-import { HEADER_FOOTER_ENDPOINT } from '@/utils/endpoints';
-import Axios from 'axios';
+
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React, { useContext } from 'react'

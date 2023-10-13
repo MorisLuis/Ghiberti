@@ -13,12 +13,20 @@
         height: 100%;
         align-items: center;
 
+        @include respond(tab-land) {
+            padding: 1em 2em;
+        }
+
         .links {
             display: flex;
 
             >a {
                 margin-right: 0.5em;
                 cursor: pointer;
+
+                @include respond(tab-land) {
+                    margin: 0px;
+                }
 
                 &:hover {
                     text-decoration: underline;

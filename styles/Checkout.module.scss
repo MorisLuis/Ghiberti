@@ -1,49 +1,74 @@
-@import './main.scss';
+@import "./main.scss";
 
-
-.Checkout{
+.Checkout {
     padding: 1em 4em;
-    .ChekoutForm{
-        .content{
+
+
+    .ChekoutForm {
+        .content {
             display: flex;
             width: 100;
             gap: 4em;
 
-            .form{
+            @include respond(tab-land) {
+                flex-direction: column;
+            }
+        
+            @include respond(phone) {
+                flex-direction: column;
+            }
+
+            .form {
                 width: 60%;
                 background-color: $background-color-secondary;
                 padding: 1em;
+
+                @include respond(tab-land) {
+                    width: 100%;
+                }
+            
+                @include respond(phone) {
+                    width: 100%;
+                }
             }
 
-            .yourOrders{
+            .yourOrders {
                 width: 40%;
                 background-color: $background-color-secondary;
                 padding: 1em;
+
+
+                @include respond(tab-land) {
+                    width: 100%;
+                }
+            
+                @include respond(phone) {
+                    width: 100%;
+                }
             }
         }
     }
 }
 
-
-.address{
+.address {
     height: 100%;
 
-    .double{
+    .double {
         display: flex;
         justify-content: space-between;
-        gap:1em;
+        gap: 1em;
 
-        >div{
+        >div {
             width: 100%;
         }
     }
 
-    >div{
+    >div {
         margin-bottom: 1em;
     }
 }
 
-.checkoutCartItem{
+.checkoutCartItem {
     display: flex;
     align-items: center;
     border: 1px solid $color-border;
@@ -51,18 +76,19 @@
     border-radius: 5px;
     width: 100%;
 
-    .image{
-        figure{
-            img{
+    .image {
+        figure {
+            img {
                 border: 1px solid $color-border;
                 margin-right: 0.5em;
             }
         }
     }
 
-    td{
+    td {
         font-size: 14px;
-        &:not(:last-child){
+
+        &:not(:last-child) {
             margin-right: 1em;
         }
     }
