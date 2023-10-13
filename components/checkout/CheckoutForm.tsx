@@ -150,6 +150,7 @@ export const CheckoutForm = ({ countriesData }: any) => {
                     <form onSubmit={handleFormSubmit} className={styles.ChekoutForm}>
                         <div className={styles.content}>
                             <div className={styles.form}>
+
                                 {/*Shipping Details*/}
                                 <div>
                                     <h2 style={{marginBottom: "1em"}}>Detalles de envío</h2>
