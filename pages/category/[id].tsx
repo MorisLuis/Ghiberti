@@ -16,7 +16,7 @@ const ProductFromCategory: NextPage<Props> = ({ products }) => {
     const category = products[0].categories[0].name
 
     return (
-        <Layout title="Categorias | Ghiberti" >
+        <Layout title={`${category} | Ghiberti`} >
             <div className={styles.CategoryPage}>
                 <p className={styles.back}  onClick={() => back()}>
                     Regresar

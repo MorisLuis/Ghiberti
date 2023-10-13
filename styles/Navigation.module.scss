@@ -17,12 +17,18 @@
             padding: 1em 2em;
         }
 
+        @include respond(phone) {
+            padding: 1em;
+        }
+
         .links {
             display: flex;
 
             >a {
                 margin-right: 0.5em;
                 cursor: pointer;
+
+
 
                 @include respond(tab-land) {
                     margin: 0px;
@@ -33,10 +39,12 @@
                 }
             }
 
+            @include respond(phone) {
+                :not(:first-child) {
+                    display: none;
+                }
+            }
         }
-
-
-
     }
 
     &:before {

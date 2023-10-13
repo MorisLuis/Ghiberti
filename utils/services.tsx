@@ -8,22 +8,28 @@ const api = new WooCommerceRestApi({
 });
 
 export const getProductsData = async () => {
-	
+
 	return await api.get(
 		'products'
 	);
 }
 
 export const getCategories = async () => {
-	
+
 	return await api.get(
 		'products/categories?'
 	);
 }
 
-export const getProductFromCategory = async ( category : string ) => {
+export const getProductFromCategory = async (category: string) => {
 
 	return await api.get(
 		`products/?category=${category}`
+	);
+}
+
+export const getProductById = async (id: string) => {
+	return await api.get(
+		`products/${id}`
 	);
 }

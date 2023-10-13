@@ -1,6 +1,16 @@
-.CategoryPage{
+@import './main.scss';
+
+.ProductPage{
     padding: 1em 4em;
     min-height: 90vh;
+
+    @include respond(tab-land) {
+        padding: 1em 3em;
+    }
+
+    @include respond(phone) {
+        padding: 1em;
+    }
 
     .title{
         padding: 0em 3em;

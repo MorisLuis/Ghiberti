@@ -24,12 +24,10 @@ export const ProductItem = (product: any) => {
         Piezas: 0
     }
 
-
-
     return (
         <div className={styles.product}>
             {/*<Link href={`/product/${slug}`} className={styles.item}>*/}
-            <Link href={`#`} className={styles.item}>
+            <Link href={`/product/${id}`} className={styles.item}>
                 <div className={styles.image}>
                     <Image
                         src={image || ""}
