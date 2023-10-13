@@ -74,7 +74,6 @@ export const createTheOrder = async (orderData: any, setOrderFailedError: any, p
 
     setOrderFailedError('');
 
-
     try {
         const request = await fetch('/api/create-order', {
             method: 'POST',
@@ -84,9 +83,7 @@ export const createTheOrder = async (orderData: any, setOrderFailedError: any, p
             body: JSON.stringify(orderData),
         });
 
-        console.log({request})
         const result = await request.json();
-        console.log({result})
 
         if (result.error) {
             response.error = result.error;

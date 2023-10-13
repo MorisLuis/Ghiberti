@@ -90,7 +90,6 @@ const createCheckoutSessionAndRedirect = async (products, input, orderId) => {
 	let session = {};
 	try {
 		session = await createCheckoutSession(sessionData);
-		console.log({session})
 	} catch (err) {
 		console.log('createCheckout session error', err);
 	}

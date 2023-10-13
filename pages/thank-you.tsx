@@ -6,7 +6,6 @@ import Layout from '@/components/Layout';
 
 
 const ThankYouContent = () => {
-	//const [ cart, setCart ] = useContext( AppContext );
 	const [isSessionFetching, setSessionFetching] = useState(false);
 	const [sessionData, setSessionData]: any = useState({});
 	const session_id = process.browser ? Router.query.session_id : null;
@@ -15,7 +14,8 @@ const ThankYouContent = () => {
 		setSessionFetching(true);
 		if (process.browser) {
 			localStorage.removeItem('woo-next-cart');
-			//setCart( null );
+
+			console.log({ session_id })
 
 			if (session_id) {
 				axios.get(`/api/get-stripe-session/?session_id=${session_id}`)
@@ -33,35 +33,15 @@ const ThankYouContent = () => {
 	}, [session_id]);
 
 	return (
-		<div className="h-almost-screen">
-			<div className="w-600px mt-10 m-auto">
+		<div style={{ minHeight: "90vh", padding: "3em" }}>
+			<div >
 				{isSessionFetching ? <p>Cargando...</p> : (
 					<>
-						<h2 className="mb-6 text-xl">
-							{/* <Bag className="inline-block mr-1"/>  */}
-							<span>Thank you for placing the order.</span>
-						</h2>
-						<p>Your payment is successful and your order details are: </p>
-						<table className="table-auto w-full text-left whitespace-no-wrap mb-8">
-							<thead>
-								<tr>
-									<th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Name</th>
-									<th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Details</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td className="px-4 py-3">Order#</td>
-									<td className="px-4 py-3">{sessionData?.metadata?.orderId}</td>
-								</tr>
-								<tr>
-									<td className="px-4 py-3">Email</td>
-									<td className="px-4 py-3">{sessionData?.customer_email}</td>
-								</tr>
-							</tbody>
-						</table>
+						<h1>Gracias por realizar el pedido.</h1>
+						<p>Su pago fue exitoso</p>
+
 						<Link legacyBehavior href="/">
-							<a className="bg-purple-600 text-white px-5 py-3 rounded-sm w-auto">Shop more</a>
+							<a className="button">Seguir comprando</a>
 						</Link>
 					</>
 				)}
