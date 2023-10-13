@@ -22,6 +22,7 @@
                 width: 60%;
                 background-color: $background-color-secondary;
                 padding: 1em;
+                border: 1px solid $color-border;
 
                 @include respond(tab-land) {
                     width: 100%;
@@ -36,7 +37,7 @@
                 width: 40%;
                 background-color: $background-color-secondary;
                 padding: 1em;
-
+                border: 1px solid $color-border;
 
                 @include respond(tab-land) {
                     width: 100%;

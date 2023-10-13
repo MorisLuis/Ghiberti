@@ -24,7 +24,7 @@ const CountrySelection = ({ input, handleOnChange, countries, isShipping } : pro
 	return (
 		<div className="mb-3">
 			<label className="leading-7 text-sm text-gray-700" htmlFor={inputId}>
-				Country
+				Pais
 				<Abbr required />
 			</label>
 			<div className="relative w-full border-none">

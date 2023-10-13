@@ -10,7 +10,7 @@ const YourOrder = ({ cart } : any) => {
             {cart.length > 0 ? (
                 <Fragment>
                     {/*Product Listing*/}
-                    <table style={{width :"100%"}} className="checkout-cart table table-hover w-full mb-10">
+                    <table style={{width :"100%"}}>
                         <thead>
                             {/* <tr className="woo-next-cart-head-container text-left">
                                 <th className="woo-next-cart-heading-el" scope="col" />
@@ -18,7 +18,7 @@ const YourOrder = ({ cart } : any) => {
                                 <th className="woo-next-cart-heading-el" scope="col">Total</th>
                             </tr> */}
                         </thead>
-                        <tbody>
+                        <tbody >
                             {cart?.length && (
                                 cart.map((item: any, index: number) => (
                                     <CheckoutCartItem key={item?.productId ?? index} item={item} />
@@ -28,7 +28,7 @@ const YourOrder = ({ cart } : any) => {
                             <tr className="bg-gray-200">
                                 <td className="" />
 {/*                                 <td className="woo-next-checkout-total font-normal text-xl">Total</td>
- */}                                <td className="woo-next-checkout-total font-bold text-xl">{cart?.cartItems?.[0]?.currency ?? ''}{cart?.totalPrice ?? ''}</td>
+ */}                                <td>{cart?.cartItems?.[0]?.currency ?? ''}{cart?.totalPrice ?? ''}</td>
                             </tr>
                         </tbody>
                     </table>

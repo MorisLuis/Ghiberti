@@ -9,12 +9,8 @@ const Abbr = ({ required }: props) => {
         return null;
     }
 
-    return <abbr className="text-red-500" style={{ textDecoration: 'none' }} title="required">*</abbr>
+    return <abbr className='red' style={{ textDecoration: 'none' }} title="required">*</abbr>
 }
-
-/* Abbr.propTypes = {
-    required: PropTypes.boolean
-} */
 
 Abbr.defaultProps = {
     required: false

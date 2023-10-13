@@ -171,7 +171,6 @@ export const CheckoutForm = ({ countriesData }: any) => {
                                         checked={input?.billingDifferentThanShipping}
                                         handleOnChange={handleOnChange}
                                         label="Facturación diferente al envío."
-                                        containerClassNames="mb-4 pt-4"
                                     />
                                 </div>
 
@@ -195,13 +194,13 @@ export const CheckoutForm = ({ countriesData }: any) => {
                             {/* Order & Payments*/}
                             <div className={styles.yourOrders}>
                                 {/*	Order*/}
-                                <h2 className="text-xl font-medium mb-4">Tu orden</h2>
+                                <h2 style={{marginBottom:"1em"}}>Tu orden</h2>
                                 <YourOrder cart={cart} />
 
                                 {/*Payment*/}
                                 <PaymentModes input={input} handleOnChange={handleOnChange} />
 
-                                <div className="woo-next-place-order-btn-wrap mt-5">
+                                <div >
                                     <button
                                         disabled={isOrderProcessing}
                                         type="submit"

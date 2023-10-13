@@ -5,7 +5,7 @@ interface Props {
     name: string;
     label: string;
     placeholder: string;
-    containerClassNames: string;
+    containerClassNames?: string;
     type: string;
 
     //Methods

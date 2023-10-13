@@ -8,7 +8,7 @@ const CheckoutCartItem = ({ item }: any) => {
 	const productImg = item?.images?.[0] ?? '';
 
 	return (
-		<tr className={styles.checkoutCartItem} key={item?.productId ?? ''}>
+		<tr className={styles.checkoutCartItem} key={item?.productId ?? ''} style={{marginBottom:"1em"}}>
 			<td className={styles.image}>
 				<figure >
 					<Image
