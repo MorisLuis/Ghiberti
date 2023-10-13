@@ -5,16 +5,16 @@ import styles from '../../styles/Product.module.scss';
 
 export const CategoryItem = (product: any) => {
 
-    console.log({product: product.product})
     const { image, name, slug, id } = product.product
 
+    const imageSource = image.src ?? {};
 
     return (
         <div className={styles.product}>
             <Link href={`/category/${id}`} className={styles.item}>
                 <div className={styles.image}>
                     <Image
-                        src={image.src || ""}
+                        src={imageSource || ""}
                         alt={name}
                         width={200}
                         height={200}
