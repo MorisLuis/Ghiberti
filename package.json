@@ -27,6 +27,7 @@
     "next-stripe": "^1.0.0-beta.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.69.3",
     "stripe": "^13.10.0",
     "typescript": "5.2.2",
     "validator": "^13.11.0"
