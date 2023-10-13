@@ -24,13 +24,20 @@ const Header = () => {
                 </section>
 
                 <section className={styles.logo}>
-                    <Image
-						src={'/ghiberti.avif'}
-						alt={"Ghiberti_Logo"}
-						width={50}
-						height={50}
-                        style={{fill: "black"}}
-					/>
+                    <img
+                        src={'/ghiberti.avif'}
+                        alt={"Ghiberti_Logo"}
+                        width={50}
+                        height={50}
+                        style={{ fill: "black" }}
+                    />
+                    {/* <Image
+                        src={'/ghiberti.avif'}
+                        alt={"Ghiberti_Logo"}
+                        width={50}
+                        height={50}
+                        style={{ fill: "black" }}
+                    /> */}
                 </section>
 
                 <section className={styles.links} >
