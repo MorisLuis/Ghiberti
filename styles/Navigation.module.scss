@@ -12,6 +12,7 @@
         justify-content: space-between;
         height: 100%;
         align-items: center;
+        position: relative;
 
         @include respond(tab-land) {
             padding: 1em 2em;
@@ -25,10 +26,10 @@
             display: flex;
 
             >a {
-                margin-right: 0.5em;
+                &:not(:last-child){
+                    margin-right: 2em;
+                }
                 cursor: pointer;
-
-
 
                 @include respond(tab-land) {
                     margin: 0px;
@@ -43,6 +44,18 @@
                 :not(:first-child) {
                     display: none;
                 }
+            }
+        }
+
+
+        .logo{
+            width: 150px;
+            position: absolute;
+            transform: translateX(50%);
+            right: 50%;
+            img{
+                width: 100%;
+                height: auto;
             }
         }
     }

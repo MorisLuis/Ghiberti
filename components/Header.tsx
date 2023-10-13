@@ -1,4 +1,5 @@
 import { CartContext } from '@/context'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useContext } from 'react'
@@ -23,7 +24,13 @@ const Header = () => {
                 </section>
 
                 <section className={styles.logo}>
-                    <p>Ghiberti</p>
+                    <Image
+						src={'/ghiberti.avif'}
+						alt={"Ghiberti_Logo"}
+						width={50}
+						height={50}
+                        style={{fill: "black"}}
+					/>
                 </section>
 
                 <section className={styles.links} >
