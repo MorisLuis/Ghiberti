@@ -194,25 +194,32 @@ export const CheckoutForm = ({ countriesData }: any) => {
 
                             {/* Order & Payments*/}
                             <div className={styles.yourOrders}>
-                                {/*	Order*/}
-                                <h2 style={{marginBottom:"1em"}}>Tu orden</h2>
-                                <YourOrder cart={cart} />
+                                {
+                                    isOrderProcessing ?
+                                    <>
+                                        <p>Creando Orden...</p>
+                                    </>
+                                    :
+                                    <>
+                                        {/*	Order*/}
+                                        <h2 style={{marginBottom:"1em"}}>Tu orden</h2>
+                                        <YourOrder cart={cart} />
 
-                                {/*Payment*/}
-                                <PaymentModes input={input} handleOnChange={handleOnChange} />
+                                        {/*Payment*/}
+                                        <PaymentModes input={input} handleOnChange={handleOnChange} />
 
-                                <div >
-                                    <button
-                                        disabled={isOrderProcessing}
-                                        type="submit"
-                                        className='button'
-                                    >
-                                        Ordenar
-                                    </button>
-                                </div>
+                                        <div >
+                                            <button
+                                                disabled={isOrderProcessing}
+                                                type="submit"
+                                                className='button'
+                                            >
+                                                Ordenar
+                                            </button>
+                                        </div>
+                                    </>
+                                }
 
-                                {/* Checkout Loading*/}
-                                {isOrderProcessing && <p>Processing Order...</p>}
                                 {requestError && <p>Error : {requestError} : Please try again</p>}
                             </div>
                         </div>
