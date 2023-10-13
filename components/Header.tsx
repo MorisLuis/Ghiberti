@@ -42,7 +42,7 @@ const Header = () => {
 
                 <section className={styles.links} >
                     <Link href={'/cart'}>
-                        Cart ({numberOfItems})
+                        Carrito ({numberOfItems})
                     </Link>
                 </section>
             </div>
