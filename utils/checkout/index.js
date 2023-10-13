@@ -6,24 +6,12 @@ import { isArray, isEmpty as isEmptyLoadash } from 'lodash';
 import { createCheckoutSession } from 'next-stripe/client'
 import { loadStripe } from '@stripe/stripe-js';
 
-/* interface PropsHandleBillingDifferentThanShipping {
-	input: any;
-	setInput: any;
-	target: any;
-} */
 
 export const handleBillingDifferentThanShipping = (input, setInput, target) => {
-	console.log({target})
 	const newState = { ...input, [target?.name]: !input.billingDifferentThanShipping };
 	setInput(newState);
 };
 
-/* 
-interface PropsSetStatesForCountry {
-	target: any;
-	setTheStates: any;
-	setIsFetchingStates: any;
-} */
 
 export const setStatesForCountry = async (target, setTheStates, setIsFetchingStates) => {
 	if ('country' === target.name) {
@@ -46,21 +34,11 @@ export const getStates = async (countryCode = '') => {
 	return data?.states ?? [];
 };
 
-/* interface PropsHandleOtherPaymentMethodCheckout {
-	input: any;
-	products: any;
-	setRequestError: any;
-	setCart: any;
-	setIsOrderProcessing: any;
-	setCreatedOrderData: any
-} */
-
 
 export const handleOtherPaymentMethodCheckout = async (input, products, setRequestError, setCart, setIsOrderProcessing, setCreatedOrderData) => {
 	setIsOrderProcessing(true);
 	const orderData = getCreateOrderData(input, products);
 	const customerOrderData = await createTheOrder(orderData, setRequestError, '');
-	console.log({ customerOrderData })
 	/* const cartCleared = await clearCart(setCart, () => {
 	}); */
 	setIsOrderProcessing(false);
@@ -75,15 +53,6 @@ export const handleOtherPaymentMethodCheckout = async (input, products, setReque
 	return customerOrderData;
 };
 
-/* 
-interface PropsHandleStripeCheckout {
-	input: any;
-	products: any;
-	setRequestError: any;
-	setCart: any;
-	setIsProcessing: any;
-	setCreatedOrderData: any
-} */
 
 
 export const handleStripeCheckout = async (input, products, setRequestError, setCart, setIsProcessing, setCreatedOrderData) => {
@@ -94,7 +63,6 @@ export const handleStripeCheckout = async (input, products, setRequestError, set
 	}); */
 	setIsProcessing(false);
 
-	console.log({customerOrderData})
 	if (isEmpty(customerOrderData?.orderId)) {
 		setRequestError('Clear cart failed');
 		return null;
@@ -109,12 +77,6 @@ export const handleStripeCheckout = async (input, products, setRequestError, set
 	return customerOrderData;
 };
 
-/* interface PropsCreateCheckoutSessionAndRedirect {
-	products: any,
-	input: any,
-	orderId: any
-} */
-
 const createCheckoutSessionAndRedirect = async (products, input, orderId) => {
 	const priceOne = 18;
 
@@ -122,15 +84,7 @@ const createCheckoutSessionAndRedirect = async (products, input, orderId) => {
 		success_url: window.location.origin + `/thank-you?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
 		cancel_url: window.location.href,
 		//customer_email: input.billingDifferentThanShipping ? input?.billing?.email : input?.shipping?.email,
-		line_items: [
-			{
-				quantity: 1,
-				name : 'Beanie with Logo',
-				images: ['https://via.placeholder.com/150'],
-				amount: Math.round(priceOne * 100),
-				currency: 'usd',
-			},
-		],		
+		line_items: getStripeLineItems( products ),	
 		//metadata: getMetaData(input, orderId),
 		payment_method_types: ['card'],
 		mode: 'payment',
@@ -160,11 +114,12 @@ const getStripeLineItems = (products) => {
 	}
 
 	return products.map((product) => {
+		console.log({product})
 		return {
 			quantity: product?.Piezas ?? 0,
 			name: product?.name ?? '',
 			images: [product?.images?.[0]?.src ?? '' ?? ''],
-			amount: Math.round((product?.line_subtotal ?? 0) * 100),
+			amount: product.price_html,
 			currency: 'usd',
 		};
 	});
