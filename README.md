@@ -41,3 +41,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Stripe results:
 ![image](https://github.com/MorisLuis/Ghiberti/assets/73044817/3461f3be-9e52-440c-806c-3e7a29523f07)
 
+
+## Woocomerce results:
+![image](https://github.com/MorisLuis/Ghiberti/assets/73044817/285c3d41-66ba-4216-9bf5-691fa18e8751)
