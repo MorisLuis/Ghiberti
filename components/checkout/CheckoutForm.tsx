@@ -102,8 +102,6 @@ export const CheckoutForm = ({ countriesData }: any) => {
             setCreatedOrderData
         );
 
-        console.log({createdOrderData})
-
         /* if (createdOrderData.paymentUrl) {
             window.location.href = createdOrderData.paymentUrl;
         } */

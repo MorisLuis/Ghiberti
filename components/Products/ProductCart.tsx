@@ -1,4 +1,5 @@
 import { CartContext } from '@/context';
+import { format } from '@/utils/currency';
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import styles from '../../styles/Product.module.scss';
@@ -8,6 +9,7 @@ export const ProductCart = (product: any) => {
     const { images, name, price_html: price, Piezas } = product.product
     const imageSource = images?.[0]?.src
     const { removeCartProduct } = useContext(CartContext)
+
 
     return (
         < div className={styles.productCart}>
@@ -21,7 +23,7 @@ export const ProductCart = (product: any) => {
             </section>
             <section className={styles.info}>
                 <h4>{name}</h4>
-                <p>{price}</p>
+                <p>{format(price)}</p>
                 <p>{Piezas}</p>
                 <button className={styles.button} onClick={() => removeCartProduct(product)}>Eliminar</button>
             </section>

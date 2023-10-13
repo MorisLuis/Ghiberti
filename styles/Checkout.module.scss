@@ -42,3 +42,28 @@
         margin-bottom: 1em;
     }
 }
+
+.checkoutCartItem{
+    display: flex;
+    align-items: center;
+    border: 1px solid $color-border;
+    padding: 0.5em;
+    border-radius: 5px;
+    width: 100%;
+
+    .image{
+        figure{
+            img{
+                border: 1px solid $color-border;
+                margin-right: 0.5em;
+            }
+        }
+    }
+
+    td{
+        font-size: 14px;
+        &:not(:last-child){
+            margin-right: 1em;
+        }
+    }
+}

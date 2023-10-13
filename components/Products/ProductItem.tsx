@@ -6,6 +6,7 @@ import styles from '../../styles/Product.module.scss';
 import { CartContext } from '@/context/cart/CartContext';
 import transformPrice from '@/utils/transformPrice';
 import toast from 'react-hot-toast';
+import { format } from '@/utils/currency';
 
 export const ProductItem = (product: any) => {
 
@@ -22,6 +23,7 @@ export const ProductItem = (product: any) => {
         slug,
         Piezas: 0
     }
+
 
 
     return (

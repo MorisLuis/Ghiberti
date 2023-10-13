@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout'
 import { ProductCart } from '@/components/Products/ProductCart';
 import { CartContext } from '@/context';
+import { format } from '@/utils/currency';
 import { HEADER_FOOTER_ENDPOINT } from '@/utils/endpoints';
 import Axios from 'axios';
 import { GetStaticProps } from 'next';
@@ -12,8 +13,9 @@ const Cart = ({
     headerFooter
 }: any) => {
 
-    const { cart, total } = useContext(CartContext);
 
+    const { cart, total } = useContext(CartContext);
+    
     return (
         <>
             <Layout title="Carrito | Ghiberti" >
@@ -29,7 +31,7 @@ const Cart = ({
                         <div className={styles.content}>
                             <section className={styles.info}>
                                 <h3>Carrito Total</h3>
-                                <p>$ {total} MXN</p>
+                                <p>{format(total)} </p>
                             </section>
 
                             <section className={styles.link}>

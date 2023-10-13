@@ -10,13 +10,13 @@ const YourOrder = ({ cart } : any) => {
             {cart.length > 0 ? (
                 <Fragment>
                     {/*Product Listing*/}
-                    <table className="checkout-cart table table-hover w-full mb-10">
+                    <table style={{width :"100%"}} className="checkout-cart table table-hover w-full mb-10">
                         <thead>
-                            <tr className="woo-next-cart-head-container text-left">
+                            {/* <tr className="woo-next-cart-head-container text-left">
                                 <th className="woo-next-cart-heading-el" scope="col" />
                                 <th className="woo-next-cart-heading-el" scope="col">Producto</th>
                                 <th className="woo-next-cart-heading-el" scope="col">Total</th>
-                            </tr>
+                            </tr> */}
                         </thead>
                         <tbody>
                             {cart?.length && (

@@ -1,13 +1,15 @@
+import { format } from '@/utils/currency';
 import { isEmpty } from 'lodash';
 import Image from 'next/image';
+import styles from '../../styles/Checkout.module.scss';
 
 const CheckoutCartItem = ({ item }: any) => {
 
 	const productImg = item?.images?.[0] ?? '';
 
 	return (
-		<tr className="woo-next-cart-item" key={item?.productId ?? ''}>
-			<td className="woo-next-cart-element">
+		<tr className={styles.checkoutCartItem} key={item?.productId ?? ''}>
+			<td className={styles.image}>
 				<figure >
 					<Image
 						src={!isEmpty(productImg?.src) ? productImg?.src : ''}
@@ -18,7 +20,7 @@ const CheckoutCartItem = ({ item }: any) => {
 				</figure>
 			</td>
 			<td className="woo-next-cart-element">{item?.name ?? ''}</td>
-			<td className="woo-next-cart-element">{item?.currency ?? ''}{item?.price_html ?? ''}</td>
+			<td className="woo-next-cart-element">{item?.currency ?? ''}{format(item?.price_html) ?? ''}</td>
 		</tr>
 	)
 };
