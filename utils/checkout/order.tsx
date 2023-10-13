@@ -2,8 +2,6 @@ import { isArray, isEmpty } from 'lodash';
 
 export const getCreateOrderLineItems = (products: any) => {
 
-    console.log({ products })
-
     if (isEmpty(products) || !isArray(products)) {
         return [];
     }

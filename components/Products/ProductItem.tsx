@@ -9,7 +9,8 @@ import toast from 'react-hot-toast';
 import { format } from '@/utils/currency';
 
 export const ProductItem = (product: any) => {
-
+    
+    
     const { images, name, price_html, slug, id } = product.product
     const image = images?.[0]?.src ?? {};
 

@@ -110,7 +110,6 @@ const getStripeLineItems = (products) => {
 	}
 
 	return products.map((product) => {
-		console.log({product})
 		return {
 			quantity: product?.Piezas ?? 0,
 			name: product?.name ?? '',

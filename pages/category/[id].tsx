@@ -40,6 +40,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         products = data
     }
 
+    console.log({products})
+
     return {
         props: {
             products,

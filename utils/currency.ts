@@ -1,6 +1,5 @@
 export const format = (value: number) => {
 
-    console.log({value})
     // Crear formateador
     const formatter = new Intl.NumberFormat('es-MX', {
         style: 'currency',

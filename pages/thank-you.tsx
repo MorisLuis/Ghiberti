@@ -15,8 +15,6 @@ const ThankYouContent = () => {
 		if (process.browser) {
 			localStorage.removeItem('woo-next-cart');
 
-			console.log({ session_id })
-
 			if (session_id) {
 				axios.get(`/api/get-stripe-session/?session_id=${session_id}`)
 					.then((response) => {
