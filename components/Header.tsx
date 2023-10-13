@@ -17,6 +17,9 @@ const Header = () => {
                     <Link href={'/'}>
                         Productos
                     </Link>
+                    <Link href={'/category'}>
+                        Categorias
+                    </Link>
                 </section>
 
                 <section className={styles.logo}>

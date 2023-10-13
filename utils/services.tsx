@@ -13,3 +13,17 @@ export const getProductsData = async () => {
 		'products'
 	);
 }
+
+export const getCategories = async () => {
+	
+	return await api.get(
+		'products/categories?'
+	);
+}
+
+export const getProductFromCategory = async ( category : string ) => {
+
+	return await api.get(
+		`products/?category=${category}`
+	);
+}

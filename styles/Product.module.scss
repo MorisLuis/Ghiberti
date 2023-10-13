@@ -15,12 +15,10 @@
 
         grid-template-columns: repeat(1, 1fr);
     }
-
-
 }
 
 .product {
-    
+    height: fit-content;
     @include respond(phone) {
         width: 100%;
     }
@@ -28,6 +26,7 @@
     .item {
         height: 100%;
         width: 100%;
+        
 
         .image {
             width: 100%;

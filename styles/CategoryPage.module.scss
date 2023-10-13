@@ -1,0 +1,17 @@
+.CategoryPage{
+    padding: 1em 4em;
+
+    .title{
+        padding: 0em 3em;
+    }
+
+    .back{
+        font-size: 14px;
+        margin-bottom: 2em;
+        cursor: pointer;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
