@@ -9,6 +9,8 @@ export const CategoryItem = (product: any) => {
     const { image, name, slug, id } = product.product
     
     const imageSource = image.src ?? {};
+
+    console.log({imageSource})
     
     return (
         <div className={styles.product}>
