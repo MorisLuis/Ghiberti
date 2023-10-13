@@ -108,7 +108,8 @@ export const CartProvider = ({ children }: any) => {
     };
 
     const removeCartProduct = (product: any) => {
-        dispatch({ type: '[Cart] - Remove product in cart', payload: product });
+        console.log({product})
+        dispatch({ type: '[Cart] - Remove product in cart', payload: product.product });
     }
 
     const removeAllCart = () => {

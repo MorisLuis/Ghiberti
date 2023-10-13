@@ -49,7 +49,7 @@ export const cartReducer = (state: CartState, action: CartActionType): CartState
         case '[Cart] - Remove product in cart':
             return {
                 ...state,
-                cart: state.cart.filter((product: any) => !(product.Codigo === action.payload.Codigo && product.Id_Marca === action.payload.Id_Marca))
+                cart: state.cart.filter((product: any) => !(product.id === action.payload.id))
             }
 
         // Cart global actions
