@@ -1,0 +1,44 @@
+@import './main.scss';
+
+
+.Checkout{
+    padding: 1em 4em;
+    .ChekoutForm{
+        .content{
+            display: flex;
+            width: 100;
+            gap: 4em;
+
+            .form{
+                width: 60%;
+                background-color: $background-color-secondary;
+                padding: 1em;
+            }
+
+            .yourOrders{
+                width: 40%;
+                background-color: $background-color-secondary;
+                padding: 1em;
+            }
+        }
+    }
+}
+
+
+.address{
+    height: 100%;
+
+    .double{
+        display: flex;
+        justify-content: space-between;
+        gap:1em;
+
+        >div{
+            width: 100%;
+        }
+    }
+
+    >div{
+        margin-bottom: 1em;
+    }
+}

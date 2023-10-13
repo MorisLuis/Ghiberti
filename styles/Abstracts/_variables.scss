@@ -1,0 +1,51 @@
+$color-primary: #f9f9f9;
+$color-secondary: hsla(207, 20%, 76%, 0.1);
+$color-tertiary: #0E2954;
+$color-cuaternary: #F9FAFA;
+
+
+$color-red: #ff0000;
+$color-blue: #068FFF;
+$color-green: #1F8A70;
+$color-gray: gray;
+$color-yellow: #EDBD42;
+
+
+$color-border: #dfdfdf;
+$color-border-secondary: #cacaca;
+$color-border-tertiary: #0E2954;
+
+$text-color:rgb(29 42 54/1);
+$text-color-light: rgb(101 116 130/1);
+$text-color-secondary: #f9f9f9;
+
+$background-color: white;
+$background-color-secondary: #f9f9f9;
+
+$background-color-gradient: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(237,237,237,1) 47%, rgba(237,237,237,1) 59%, rgba(245,147,212,0.05) 86%, rgba(9,118,223,0.05) 98%);
+$background-color-gradient-second: radial-gradient(circle, rgba(6,143,255,1) 0%, rgba(255,0,0,1) 50%, rgba(6,143,255,1) 100%);
+
+.dark {
+  $background-color: black;
+  $color-primary: #769d8d;
+  $text-color: white;
+}
+
+.blur{
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+//Font-size
+$font-big: 60px;
+$font-med: 40px;
+
+//Desktop
+$font-normal: 12px;
+$font-sm: 10px;
+
+//Phone
+$font-normal-phone: 14px;
+$font-sm-phone: 12px;

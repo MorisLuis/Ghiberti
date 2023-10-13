@@ -1,124 +1,38 @@
-[![Playwright Tests](https://github.com/w3bdesign/nextjs-woocommerce/actions/workflows/playwright.yml/badge.svg)](https://github.com/w3bdesign/nextjs-woocommerce/actions/workflows/playwright.yml)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/29de6847b01142e6a0183988fc3df46a)](https://app.codacy.com/gh/w3bdesign/nextjs-woocommerce?utm_source=github.com&utm_medium=referral&utm_content=w3bdesign/nextjs-woocommerce&utm_campaign=Badge_Grade_Settings)
-[![CodeFactor](https://www.codefactor.io/repository/github/w3bdesign/nextjs-woocommerce/badge)](https://www.codefactor.io/repository/github/w3bdesign/nextjs-woocommerce)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=w3bdesign_nextjs-woocommerce&metric=alert_status)](https://sonarcloud.io/dashboard?id=w3bdesign_nextjs-woocommerce)
- 
-![Screenshot 1](./screenshots/screenshot1.jpg)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Star History 
+## Getting Started
 
-[![Star History Chart](https://api.star-history.com/svg?repos=w3bdesign/nextjs-woocommerce&type=Date)](https://star-history.com/#w3bdesign/nextjs-woocommerce&Date)
+First, run the development server:
 
-# Next.js Ecommerce site with WooCommerce backend
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-## Live URL: <https://next-woocommerce.dfweb.no>
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Table Of Contents (TOC)
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
--   [Installation](#Installation)
--   [Features](#Features)
--   [Issues](#Issues)
--   [Troubleshooting](#Troubleshooting)
--   [TODO](#TODO)
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-## Installation
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-1.  Install and activate the following required plugins, in your WordPress plugin directory:
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
--   [woocommerce](https://wordpress.org/plugins/woocommerce) Ecommerce for WordPress.
--   [wp-graphql](https://wordpress.org/plugins/wp-graphql) Exposes GraphQL for WordPress.
--   [wp-graphql-woocommerce](https://github.com/wp-graphql/wp-graphql-woocommerce) Adds WooCommerce functionality to a WPGraphQL schema.
--   [wp-algolia-woo-indexer](https://github.com/w3bdesign/wp-algolia-woo-indexer) WordPress plugin coded by me. Sends WooCommerce products to Algolia. Required for search to work. 
+## Learn More
 
-Optional plugin:
+To learn more about Next.js, take a look at the following resources:
 
--   [headless-wordpress](https://github.com/w3bdesign/headless-wp) Disables the frontend so only the backend is accessible. (optional)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-The current release has been tested and is confirmed working with the following versions:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
--   WordPress version 6.1.1
--   WooCommerce version 7.4.0
--   WP GraphQL version 1.13.8
--   WooGraphQL version 0.12.0
--   WPGraphQL CORS version 2.1
+## Deploy on Vercel
 
-2.  For debugging and testing, install either:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-    <https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/> (Firefox)
-
-    <https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm> (Chrome)
-
-3.  Make sure WooCommerce has some products already
-
-
-4.  Clone or fork the repo and modify `.env.example` and rename it to `.env`
-
-    Then set the environment variables accordingly in Vercel or your preferred hosting solution.
-
-    See <https://vercel.com/docs/environment-variables>
-
-5.  Modify the values according to your setup
-
-6.  Start the server with `npm run dev`
-
-7.  Enable COD (Cash On Demand) payment method in WooCommerce
-
-8.  Add a product to the cart
-
-9.  Proceed to checkout (Gå til kasse)
-
-10. Fill in your details and place the order
-
-## Features
-
--   Next.js version 13.5.3
--   React 18
--   Typescript
--   Tests with Playwright
--   Connect to Woocommerce GraphQL API and list name, price and display image for products
--   Support for simple products and variable products
--   Cart handling and checkout with WooCommerce (Cash On Delivery only for now)
--   Algolia search (requires [algolia-woo-indexer](https://github.com/w3bdesign/algolia-woo-indexer))
--   Meets WCAG accessibility standards where possible
--   Placeholder for products without images
--   Apollo Client with GraphQL
--   React Hook Form
--   Native HTML5 form validation
--   Animations with Framer motion, Styled components and Animate.css
--   Loading spinner created with Styled Components
--   Shows page load progress with Nprogress during navigation
--   Fully responsive design
--   Category and product listings
--   Show stock status
--   Pretty URLs with builtin Nextjs functionality
--   Tailwind 3 for styling
--   JSDoc comments
-
-## Troubleshooting
-
-### I am getting a cart undefined error or other GraphQL errors
-
-Check that you are using the 0.12.0 version of the [wp-graphql-woocommerce](https://github.com/wp-graphql/wp-graphql-woocommerce) plugin
-
-### The products page isn't loading
-
-Check the attributes of the products. Right now the application requires Size and Color.
-
-## Issues
-
-Overall the application is working as intended, but it has not been tested extensively in a production environment. 
-More testing and debugging is required before deploying it in a production environment. 
-
-With that said, keep the following in mind:
-
--   Currently only simple products and variable products work without any issues. Other product types are not known to work.
--   Only Cash On Delivery (COD) is currently supported. More payment methods may be added later.
-
-## TODO
-
--   Add total to cart/checkout page
--   Copy billing address to shipping address
--   Add order dashboard and require login
--   Hide products not in stock
--   Add better SEO
--   Re-add Next/image when it is working better
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

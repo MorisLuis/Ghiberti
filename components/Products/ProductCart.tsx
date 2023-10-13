@@ -1,0 +1,27 @@
+import Image from 'next/image';
+import React from 'react';
+import styles from '../../styles/Product.module.scss';
+
+export const ProductCart = (product: any) => {
+
+    const { images, name, price_html : price, Piezas } = product.product
+    const imageSource = images?.[0]?.src
+
+    return (
+        < div className={styles.productCart}>
+            <section className={styles.image}>
+                <Image
+                    src={imageSource || ""}
+                    alt={name}
+                    width={200}
+                    height={200}
+                />
+            </section>
+            <section className={styles.info}>
+                <h4>{name}</h4>
+                <p>{price}</p>
+                <p>{Piezas}</p>
+            </section>
+        </div >
+    )
+}

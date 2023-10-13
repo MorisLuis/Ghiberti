@@ -16,9 +16,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/context/index.js", "src/components/Image/image.js", "src/pages/api/get-products.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/stripe-web-hook.js", "pages/api/get-stripe-session.js", "utils/checkout/index.js", "pages/api/stripe/[...nextstripe].js", "utils/checkout/index.js"],
   "exclude": ["node_modules"]
 }

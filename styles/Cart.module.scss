@@ -1,0 +1,39 @@
+@import './main.scss';
+
+.Cart {
+    display: flex;
+    padding: 2em;
+    gap: 1em;
+    min-height: 90vh;
+
+    .products {
+        width: 70%;
+        background-color: $background-color-secondary;
+        border: 1px solid $color-border;
+        padding: 2em;
+
+        >div {
+            margin-bottom: 1em;
+        }
+
+    }
+
+    .checkout {
+        background-color: $background-color-secondary;
+        width: 30%;
+        border: 1px solid $color-border;
+        padding: 2em;
+
+        .content{
+            width: 100%;
+
+            .info{
+                margin-bottom: 2em;
+                width: 100%;
+            }
+
+        }
+        
+
+    }
+}
