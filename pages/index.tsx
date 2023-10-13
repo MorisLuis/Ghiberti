@@ -14,6 +14,8 @@ const Home = ({
       <Layout title="Inicio | Ghiberti" >
         <>
           <video src="/video.mp4" playsInline muted autoPlay loop className={styles.banner}/>
+
+          <h1 style={{ padding:"1em 3em 0em 3em"}}>Productos</h1>
           <ProductGrid products={products} />
         </>
 
