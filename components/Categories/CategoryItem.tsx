@@ -5,24 +5,29 @@ import styles from '../../styles/Product.module.scss';
 
 export const CategoryItem = (product: any) => {
 
-    
+
     const { image, name, slug, id } = product.product
-    
+
     const imageSource = image.src ?? {};
 
-    console.log({imageSource})
-    
+    console.log({ imageSource })
+
     return (
         <div className={styles.product}>
             <Link href={`/category/${id}`} className={styles.item}>
                 <div className={styles.image}>
-                    <Image
+                    <img src={imageSource || ""} 
+                    alt={name}
+                    width={200}
+                        height={200}
+                    />
+                    {/* <Image
                         src={imageSource || ""}
                         alt={name}
                         width={200}
                         height={200}
                         priority
-                    />
+                    /> */}
                 </div>
                 <div className={styles.info}>
                     <h6 className="font-bold uppercase my-2 tracking-0.5px">{name ?? ''}</h6>
