@@ -9,7 +9,7 @@ import PaymentModes from './PaymentModes';
 import validateAndSanitizeCheckoutForm from '@/validator/Checkout';
 
 // Use this for testing purposes, so you dont have to fill the checkout form over an over again.
-const defaultCustomerInfo = {
+/* const defaultCustomerInfo = {
     firstName: 'Imran',
     lastName: 'Sayed',
     address1: '123 Abc farm',
@@ -22,9 +22,9 @@ const defaultCustomerInfo = {
     phone: '9883778278',
     company: 'The Company',
     errors: null,
-};
+}; */
 
-/* const defaultCustomerInfo = {
+const defaultCustomerInfo = {
     firstName: '',
     lastName: '',
     address1: '',
@@ -37,7 +37,7 @@ const defaultCustomerInfo = {
     phone: '',
     company: '',
     errors: null
-} */
+}
 
 export const CheckoutForm = ({ countriesData }: any) => {
 

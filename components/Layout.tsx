@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React, { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -26,6 +27,11 @@ const Layout = ({
             {children}
 
             <Footer />
+
+            <Toaster
+                position="bottom-left"
+                reverseOrder={false}
+            />
         </>
     )
 }

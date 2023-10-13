@@ -5,6 +5,7 @@ import { sanitize } from '../../utils/sanitize';
 import styles from '../../styles/Product.module.scss';
 import { CartContext } from '@/context/cart/CartContext';
 import transformPrice from '@/utils/transformPrice';
+import toast from 'react-hot-toast';
 
 export const ProductItem = (product: any) => {
 
@@ -34,7 +35,19 @@ export const ProductItem = (product: any) => {
                         width={200}
                         height={200}
                     />
-                    <button className='button__secondary' onClick={() => addProductToCart(dataProduct)}>
+                    <button className='button__secondary' onClick={() => {
+                        addProductToCart(dataProduct)
+                        toast(`Se agrego: ${name}`,
+                            {
+                                icon: '👏',
+                                style: {
+                                    borderRadius: '10px',
+                                    background: '#333',
+                                    color: '#fff',
+                                },
+                            }
+                        );
+                    }}>
                         Comprar
                     </button>
                 </div>
