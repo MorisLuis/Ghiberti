@@ -1,11 +1,9 @@
-import Layout from '@/components/Layout'
-import { ProductGrid } from '@/components/Products/ProductGrid'
-import { getProductsData } from '@/utils/services'
-import axios from 'axios'
-import { GetStaticProps } from 'next'
-import React from 'react'
-import { HEADER_FOOTER_ENDPOINT } from '../utils/endpoints'
-
+import Layout from '@/components/Layout';
+import { ProductGrid } from '@/components/Products/ProductGrid';
+import { getProductsData } from '@/utils/services';
+import { GetStaticProps } from 'next';
+import React from 'react';
+import styles from '../styles/Home.module.scss';
 
 const Home = ({
   headerFooter,
@@ -14,7 +12,11 @@ const Home = ({
   return (
     <>
       <Layout title="Inicio | Ghiberti" >
-        <ProductGrid products={products}/>
+        <>
+          <video src="/video.mp4" playsInline muted autoPlay loop className={styles.banner}/>
+          <ProductGrid products={products} />
+        </>
+
       </Layout>
     </>
   )
@@ -24,19 +26,18 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const menu  = await axios.get(HEADER_FOOTER_ENDPOINT)
-  const headerFooterData = menu.data.data
+  /* const menu  = await axios.get(HEADER_FOOTER_ENDPOINT)
+  const headerFooterData = menu.data.data */
 
-  //const {data: products}  = await axios.get('http://localhost:3000/api/get-products')
-	const { data: products } = await getProductsData();
+  const { data: products } = await getProductsData();
 
 
   return {
     props: {
-      headerFooter: headerFooterData ?? {},
+      headerFooter: {},
       products: products,
-      loading : false,
-      networkStatus : false,
+      loading: false,
+      networkStatus: false,
     },
     revalidate: 1,
   };

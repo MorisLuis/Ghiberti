@@ -20,13 +20,13 @@ export default Checkout;
 
 export async function getStaticProps() {
 
-    const { data: headerFooterData } = await Axios.get(HEADER_FOOTER_ENDPOINT);
+    //const { data: headerFooterData } = await Axios.get(HEADER_FOOTER_ENDPOINT);
     const { data: countries } = await Axios.get(WOOCOMMERCE_COUNTRIES_ENDPOINT);
 
 
     return {
         props: {
-            headerFooter: headerFooterData?.data ?? {},
+            headerFooter:   {},
             countries: countries || {}
         },
         revalidate: 1,

@@ -5,6 +5,7 @@ import { createTheOrder, getCreateOrderData } from "./order";
 import { isArray, isEmpty as isEmptyLoadash } from 'lodash';
 import { createCheckoutSession } from 'next-stripe/client'
 import { loadStripe } from '@stripe/stripe-js';
+import { useRouter } from "next/router";
 
 
 export const handleBillingDifferentThanShipping = (input, setInput, target) => {
@@ -35,12 +36,12 @@ export const getStates = async (countryCode = '') => {
 };
 
 
-export const handleOtherPaymentMethodCheckout = async (input, products, setRequestError, setCart, setIsOrderProcessing, setCreatedOrderData) => {
+export const handleOtherPaymentMethodCheckout = async (input, products, setRequestError, removeAllCart, setIsOrderProcessing, setCreatedOrderData) => {
+
 	setIsOrderProcessing(true);
 	const orderData = getCreateOrderData(input, products);
 	const customerOrderData = await createTheOrder(orderData, setRequestError, '');
-	/* const cartCleared = await clearCart(setCart, () => {
-	}); */
+	removeAllCart()
 	setIsOrderProcessing(false);
 
 	if (isEmpty(customerOrderData?.orderId)) {
@@ -55,20 +56,17 @@ export const handleOtherPaymentMethodCheckout = async (input, products, setReque
 
 
 
-export const handleStripeCheckout = async (input, products, setRequestError, setCart, setIsProcessing, setCreatedOrderData) => {
+export const handleStripeCheckout = async (input, products, setRequestError, removeAllCart, setIsProcessing, setCreatedOrderData) => {
 	setIsProcessing(true);
 	const orderData = getCreateOrderData(input, products);
 	const customerOrderData = await createTheOrder(orderData, setRequestError, '');
-	/* const cartCleared = await clearCart(setCart, () => {
-	}); */
+	removeAllCart()
 	setIsProcessing(false);
 
 	if (isEmpty(customerOrderData?.orderId)) {
 		setRequestError('Clear cart failed');
 		return null;
 	}
-
-	console.log('success', customerOrderData)
 
 	// On success show stripe form.
 	setCreatedOrderData(customerOrderData);
@@ -78,14 +76,13 @@ export const handleStripeCheckout = async (input, products, setRequestError, set
 };
 
 const createCheckoutSessionAndRedirect = async (products, input, orderId) => {
-	const priceOne = 18;
 
 	const sessionData = {
 		success_url: window.location.origin + `/thank-you?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
 		cancel_url: window.location.href,
-		//customer_email: input.billingDifferentThanShipping ? input?.billing?.email : input?.shipping?.email,
+		customer_email: input.billingDifferentThanShipping ? input?.billing?.email : input?.shipping?.email,
 		line_items: getStripeLineItems( products ),	
-		//metadata: getMetaData(input, orderId),
+		metadata: getMetaData(input, orderId),
 		payment_method_types: ['card'],
 		mode: 'payment',
 	};

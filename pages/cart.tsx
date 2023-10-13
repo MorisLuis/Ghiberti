@@ -52,13 +52,13 @@ export default Cart
 
 export const getStaticProps: GetStaticProps = async () => {
 
-    const menu = await Axios.get(HEADER_FOOTER_ENDPOINT)
-    const headerFooterData = menu.data.data
+    /* const menu = await Axios.get(HEADER_FOOTER_ENDPOINT)
+    const headerFooterData = menu.data.data */
 
 
     return {
         props: {
-            headerFooter: headerFooterData ?? {},
+            headerFooter: {},
         },
         revalidate: 1,
     };

@@ -56,7 +56,7 @@ export const CheckoutForm = ({ countriesData }: any) => {
         paymentMethod: 'cod',
     };
 
-    const { cart, addProductToCart } = useContext(CartContext);
+    const { cart, removeAllCart } = useContext(CartContext);
     const [input, setInput] = useState(initialState);
     const [requestError, setRequestError] = useState(null);
     const [theShippingStates, setTheShippingStates] = useState([]);
@@ -88,7 +88,7 @@ export const CheckoutForm = ({ countriesData }: any) => {
 
         // For stripe payment mode, handle the strip payment and thank you.
         if ('stripe' === input.paymentMethod) {
-            const createdOrderData = await handleStripeCheckout(input, cart, setRequestError, addProductToCart, setIsOrderProcessing, setCreatedOrderData);
+            const createdOrderData = await handleStripeCheckout(input, cart, setRequestError, removeAllCart, setIsOrderProcessing, setCreatedOrderData);
             return null;
         }
 
@@ -97,14 +97,16 @@ export const CheckoutForm = ({ countriesData }: any) => {
             input,
             cart,
             setRequestError,
-            addProductToCart,
+            removeAllCart,
             setIsOrderProcessing,
             setCreatedOrderData
         );
 
-        /* if (createdOrderData.paymentUrl) {
+        console.log({createdOrderData})
+
+        if (createdOrderData.paymentUrl) {
             window.location.href = createdOrderData.paymentUrl;
-        } */
+        }
 
         setRequestError(null);
 
