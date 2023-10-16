@@ -1,0 +1,15 @@
+@import "./main.scss";
+
+.searchItemCard {
+    width: 100%;
+    padding: 0.5em 1em;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+
+    &:hover {
+        background-color: rgba($color: $color-cuaternary, $alpha: 1);
+        border: 1px solid $color-border;
+
+    }
+}

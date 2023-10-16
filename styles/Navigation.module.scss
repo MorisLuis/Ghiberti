@@ -40,8 +40,23 @@
                 }
             }
 
+            >div {
+                &:not(:last-child){
+                    margin-right: 2em;
+                }
+                cursor: pointer;
+
+                @include respond(tab-land) {
+                    margin: 0px;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
             @include respond(phone) {
-                :not(:first-child) {
+                :not(:last-child) {
                     display: none;
                 }
             }

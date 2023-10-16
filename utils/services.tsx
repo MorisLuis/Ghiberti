@@ -33,3 +33,9 @@ export const getProductById = async (id: string) => {
 		`products/${id}`
 	);
 }
+
+export const getProductsBySearch = async (term: string) => {
+	return await api.get(
+		`products?search=${term}`
+	)
+}
