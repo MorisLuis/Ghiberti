@@ -1,5 +1,6 @@
 import { CartContext } from '@/context'
 import { sanitize } from '@/utils/sanitize'
+import transformPrice from '@/utils/transformPrice'
 import Image from 'next/image'
 import React, { useContext } from 'react'
 import toast from 'react-hot-toast'
@@ -9,7 +10,16 @@ const ProductDetails = ({
 }: any) => {
 
     const { addProductToCart } = useContext(CartContext);
-    const { images, name, description, price_html } = product;
+    const { images, name, description, price_html, id, slug } = product;
+
+    const dataProduct = {
+        id,
+        images,
+        name,
+        price_html: transformPrice(price_html),
+        slug,
+        Piezas: 0
+    }
 
     return (
         <div className={styles.ProductDetail}> 
@@ -30,7 +40,7 @@ const ProductDetails = ({
                     <button className='button'
                         onClick={(e) => {
                             e.preventDefault()
-                            addProductToCart(product)
+                            addProductToCart(dataProduct)
                             toast(`Se agrego: ${name}`,
                                 {
                                     icon: '👏',
