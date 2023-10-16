@@ -1,3 +1,4 @@
+import InfiniteSlider from '@/components/InfiniteSlider';
 import Layout from '@/components/Layout';
 import { ProductGrid } from '@/components/Products/ProductGrid';
 import { getProductsData } from '@/utils/services';
@@ -15,8 +16,11 @@ const Home = ({
         <>
           <video src="/video.mp4" playsInline muted autoPlay loop className={styles.banner}/>
 
-          <h1 style={{ padding:"1em 3em 0em 3em"}}>Productos</h1>
-          <ProductGrid products={products} />
+          <h1 style={{ padding:"1em 3em 1em 3em"}}>Productos</h1>
+          <InfiniteSlider
+            products={products}
+          />
+          {/* <ProductGrid products={products} /> */}
         </>
 
       </Layout>

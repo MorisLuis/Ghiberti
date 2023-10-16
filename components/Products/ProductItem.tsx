@@ -9,8 +9,8 @@ import toast from 'react-hot-toast';
 import { format } from '@/utils/currency';
 
 export const ProductItem = (product: any) => {
-    
-    
+
+
     const { images, name, price_html, slug, id } = product.product
     const image = images?.[0]?.src ?? {};
 
@@ -26,7 +26,7 @@ export const ProductItem = (product: any) => {
     }
 
     return (
-        <div className={styles.product}>
+        <div className={styles.product} style={product.carrousel === true  ? { marginRight: "1em" } : { marginRight: "0em" }}>
             <Link href={`/product/${id}`} className={styles.item}>
                 <div className={styles.image}>
                     <Image
@@ -35,7 +35,8 @@ export const ProductItem = (product: any) => {
                         width={200}
                         height={200}
                     />
-                    <button className='button__secondary' onClick={() => {
+                    <button className='button__secondary' onClick={(e) => {
+                        e.preventDefault()
                         addProductToCart(dataProduct)
                         toast(`Se agrego: ${name}`,
                             {

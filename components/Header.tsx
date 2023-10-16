@@ -41,7 +41,7 @@ const Header = () => {
             <div className={styles.Header}>
                 <div className={styles.content}>
                     <section className={styles.links}>
-                        <Link href={'/'}>
+                        <Link href={'/products'}>
                             Productos
                         </Link>
                         <Link href={'/category'}>
@@ -55,13 +55,15 @@ const Header = () => {
 
 
                     <section className={styles.logo}>
-                        <img
-                            src={'/ghiberti.avif'}
-                            alt={"Ghiberti_Logo"}
-                            width={50}
-                            height={50}
-                            style={{ fill: "black" }}
-                        />
+                        <Link href={'/'}>
+                            <img
+                                src={'/ghiberti.avif'}
+                                alt={"Ghiberti_Logo"}
+                                width={50}
+                                height={50}
+                                style={{ fill: "black" }}
+                            />
+                        </Link>
 
                     </section>
 

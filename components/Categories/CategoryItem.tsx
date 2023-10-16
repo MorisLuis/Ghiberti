@@ -10,7 +10,6 @@ export const CategoryItem = (product: any) => {
 
     const imageSource = image.src ?? {};
 
-    console.log({ imageSource })
 
     return (
         <div className={styles.product}>
@@ -21,13 +20,6 @@ export const CategoryItem = (product: any) => {
                         width={200}
                         height={200}
                     />
-                    {/* <Image
-                        src={imageSource || ""}
-                        alt={name}
-                        width={200}
-                        height={200}
-                        priority
-                    /> */}
                 </div>
                 <div className={styles.info}>
                     <h6 className="font-bold uppercase my-2 tracking-0.5px">{name ?? ''}</h6>

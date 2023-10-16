@@ -28,7 +28,8 @@ const ProductDetails = ({
 
                 <div className={styles.buy}>
                     <button className='button'
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.preventDefault()
                             addProductToCart(product)
                             toast(`Se agrego: ${name}`,
                                 {
